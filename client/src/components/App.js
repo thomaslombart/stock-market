@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Chart from '../components/Chart';
-import StockList from '../containers/StockList';
-import AddStock from '../containers/AddStock';
+import Chart from './Chart';
+import StockList from './StockList';
+import AddStock from './AddStock';
 
 class App extends Component {
   render() {

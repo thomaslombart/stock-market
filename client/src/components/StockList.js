@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Stock from '../components/Stock';
+import Stock from './Stock';
 import {removeStock} from '../actions/stock';
 import {connect} from 'react-redux';
 

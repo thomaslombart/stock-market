@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {addStock} from '../actions/stock';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class AddStock extends Component {
@@ -25,7 +26,7 @@ class AddStock extends Component {
     e.preventDefault();
     if (this.getValidationCodeState()) {
       this.setState({code: ''});
-      this.props.addNewStock(this.state.code);
+      this.props.addStock(this.state.code);
     }
   }
 
@@ -41,11 +42,7 @@ class AddStock extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addNewStock: (code) => {
-    dispatch(addStock(code))
-  }
-})
+const mapDispatchToProps = dispatch => bindActionCreators({addStock}, dispatch);
 
 const AddStockContainer = connect(null, mapDispatchToProps)(AddStock);
 
