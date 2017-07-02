@@ -8,10 +8,17 @@
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0",
+    "socket.io": "^2.0.3"
   },
   "scripts": {
     "start": "babel-node index.js",
+    "dev": "nodemon --ignore ./client --exec babel-node -- ./index.js",
     "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
