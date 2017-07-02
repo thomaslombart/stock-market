@@ -1,20 +1,20 @@
-const express = require('express');
-const axios = require('axios');
-const path = require('path');
-const QUANDL_API_KEY = process.env.QUANDL_API_KEY;
-const app = express();
+import express from 'express';
+import axios from 'axios';
+import path from 'path';
+import stock from './server/routes/stock';
 
-const getFinancialData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${code}.json?api_key=${QUANDL_API_KEY}`;
+const app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/api/stock/:code', (req, res) => {
-  axios.get(getFinancialData(req.params.code)).then(response => console.log(response.data))
-});
+app.use('/api/stock', stock);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
-const port = process.env.PORT || 3001;
-app.listen(port);
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => console.log(`Express Server is listening on port ${port}`));
+
+const io = require('socket.io')(server);
+require('./server/sockets.js')(io);
