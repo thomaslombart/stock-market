@@ -1,11 +1,12 @@
 import express from 'express';
 import axios from 'axios';
-import {getFinancialData} from '../helpers/';
+import Stock from '../models/stock';
 
 const router = express.Router();
 
-router.get('/:code', (req, res) => {
-  axios.get(getFinancialData(req.params.code)).then(response => res.json(response.data)).catch(error => console.log(error));
+router.post('/', (req, res) => {
+  let stock = new Stock({code: req.body.code});
+  stock.save(err => err ? res.sendStatus(500) : res.sendStatus(200));
 });
 
 export default router;
