@@ -1,5 +1,4 @@
-const ADD_STOCK = 'ADD_STOCK';
-const REMOVE_STOCK = 'REMOVE_STOCK';
+import {ADD_STOCK, REMOVE_STOCK} from '../actions/stock';
 
 const stockReducer = (state = [], action) => {
   switch (action.type) {
