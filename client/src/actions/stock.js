@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const ADD_STOCK = 'ADD_STOCK';
 export const REMOVE_STOCK = 'REMOVE_STOCK';
+export const LOAD_STOCKS = 'LOAD_STOCKS';
 
 let nextStockID = 0;
 
@@ -24,8 +25,19 @@ socket.on('receive stock code', data => {
 
 export const addStock = code => {
   return dispatch => {
-    return axios.post(`/api/stock`, {'code': code})
+    return axios.post('/api/stock', {'code': code})
     .then(res => socket.emit('send stock code', code));
+  }
+}
+
+export const loadStocks = () => {
+  return dispatch => {
+    return axios.get('/api/stock').then(res => {
+      dispatch({
+        type: LOAD_STOCKS,
+        stocks: res.data
+      })
+    });
   }
 }
 
