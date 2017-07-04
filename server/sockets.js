@@ -10,5 +10,8 @@ module.exports = io => {
         return io.emit('receive stock code', code);
       }).catch(error => console.log(error));
     });
+    socket.on('send delete stock code', id => {
+      return io.emit('delete stock code', id);
+    });
   });
 }

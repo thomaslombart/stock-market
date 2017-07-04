@@ -23,4 +23,10 @@ router.post('/', (req, res) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+    Stock.findByIdAndRemove(req.params.id, (err, doc) => {
+      res.sendStatus(200);
+    });
+});
+
 export default router;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Stock from './Stock';
-import {removeStock, loadStocks} from '../actions/stock';
+import {loadStocks} from '../actions/stock';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -13,7 +13,7 @@ class StockList extends Component {
     return (
       <div>
         <ul>
-          {this.props.stocks.map(stock => <Stock key={stock.id} code={stock.code}/>)}
+          {this.props.stocks.map((stock, i) => <Stock key={i} id={stock.id} code={stock.code}/>)}
           {this.props.stocks.length === 0 && <p>No Stocks!</p>}
         </ul>
       </div>
