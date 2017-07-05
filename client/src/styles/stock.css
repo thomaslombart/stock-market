@@ -1,3 +1,22 @@
+.stock {
+  /* inline block make the div adjust to content */
+  display: inline-block;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 7px;
+}
+
 .stock-code {
-  font-weight: bold;
+  font-family: Oswald;
+}
+
+.fa-times {
+  cursor: pointer;
+  color: grey;
+  transition: color 0.4s ease-in-out;
+  margin-left: 2px;
+}
+
+.fa-times:hover {
+  color: red;
 }
