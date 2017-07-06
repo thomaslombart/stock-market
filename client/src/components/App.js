@@ -7,15 +7,11 @@ import '../styles/app.css';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {pieData: [{name: "Firefox",y: 6},{name: "MSIE",y: 4},{name: "Safari",y: 4},{name: "Opera",y: 1},{name: "Chrome",y: 7}]}
-  }
   render() {
     return (
-      <div className="main">
+      <div className="main container">
         <h1 className="title">Watch the stocks</h1>
-        <Chart data={this.state.pieData}/>
+        <Chart/>
         <StockList/>
         <AddStock/>
         <Footer/>
