@@ -6,6 +6,8 @@ const stockReducer = (state = [], action) => {
       return [
         ...state, {
           code: action.code,
+          data: action.data,
+          description: action.description,
           id: action.id
         }
       ]

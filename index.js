@@ -3,7 +3,6 @@ import axios from 'axios';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import path from 'path';
-import stock from './server/routes/stock';
 
 mongoose.connect(process.env.STOCK_MLAB_URI);
 
@@ -12,7 +11,6 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/api/stock', stock);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));

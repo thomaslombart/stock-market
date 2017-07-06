@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
 import Stock from './Stock';
-import {loadStocks} from '../actions/stock';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class StockList extends Component {
-  componentDidMount() {
-    this.props.loadStocks();
-  }
-
   render() {
     return (
       <div>
@@ -22,8 +16,7 @@ class StockList extends Component {
 }
 
 const mapStateToProps = state => ({stocks: state});
-const mapDispatchToProps = dispatch => bindActionCreators({loadStocks}, dispatch);
 
-const StockListContainer = connect(mapStateToProps, mapDispatchToProps)(StockList);
+const StockListContainer = connect(mapStateToProps)(StockList);
 
 export default StockListContainer;
