@@ -16,12 +16,15 @@ class Stock extends Component {
 
   render() {
     return (
-      <div className="stock">
-        <p className="stock-code">{this.props.code}
-          <span onClick={this.handleRemoveClick}>
-            <i className="fa fa-times"></i>
-          </span>
-        </p>
+      <div className="stock col-sm-4">
+          <p className="stock-code">{this.props.code}
+            <span className="float-sm-right" onClick={this.handleRemoveClick}>
+              <i className="fa fa-times"></i>
+            </span>
+          </p>
+          <p className="stock-description">
+            {this.props.description}
+          </p>
       </div>
     )
   }

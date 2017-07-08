@@ -1,22 +1,24 @@
 .stock {
   /* inline block make the div adjust to content */
-  display: inline-block;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  padding: 7px;
+  border: 0.2px solid #3e3e40;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.stock:hover {
+  background-color: #3e3e40;
+  color: white;
 }
 
 .stock-code {
   font-family: Oswald;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
-.fa-times {
-  cursor: pointer;
-  color: grey;
-  transition: color 0.4s ease-in-out;
-  margin-left: 2px;
-}
-
-.fa-times:hover {
-  color: red;
+.stock-description {
+  font-family: Oswald;
+  font-weight: 300;
+  font-size: 0.9em;
 }

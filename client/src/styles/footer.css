@@ -1,6 +1,6 @@
 .footer {
   font-family: Oswald;
-  color: gray;
+  color: #3e3e40;
 }
 
 .social-link {
@@ -10,5 +10,5 @@
 }
 
 .social-link:hover {
-  color: black;
+  color: #3e3e40;
 }

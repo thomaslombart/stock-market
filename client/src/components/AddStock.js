@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {addStock} from '../actions/stock';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import '../styles/addstock.css';
 
 class AddStock extends Component {
   constructor(props) {
@@ -32,15 +33,13 @@ class AddStock extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-sm-12">
+      <div className="add-stock-container">
           <div className="input-group">
-            <input className="form-control" placeholder="Stock code e.g. AAPL" value={this.state.code} onChange={this.handleCodeChange}/>
+            <input className="form-control" placeholder="Stock symbol e.g. AAPL" value={this.state.code} onChange={this.handleCodeChange}/>
             <span className="input-group-btn">
               <button className="btn btn-success" onClick={this.submitStockCode}>Add</button>
             </span>
           </div>
-        </div>
       </div>
     )
   }

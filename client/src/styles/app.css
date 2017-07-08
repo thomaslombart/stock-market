@@ -1,8 +1,6 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+body, html {
+  margin: 0;
+  padding: 0;
 }
 
 .title {
