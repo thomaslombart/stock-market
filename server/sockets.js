@@ -2,7 +2,7 @@ import axios from 'axios';
 import Stock from './models/stock';
 
 const QUANDL_API_KEY = process.env.QUANDL_API_KEY;
-const financialData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${code}.json?column_index=1&api_key=${QUANDL_API_KEY}`;
+const financialData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${code}.json?column_index=1&order=asc&api_key=${QUANDL_API_KEY}`;
 
 module.exports = io => {
   io.on('connection', socket => {
@@ -25,6 +25,10 @@ module.exports = io => {
             if (response.status === 200) {
               let stock = response.data.dataset;
               let stockToSave = new Stock({code: stock.dataset_code, description: stock.name, data: stock.data});
+              // Convert datetime to timestamp for Highcharts
+              for (let i = 0; i < stockToSave.data.length; i++) {
+                stockToSave.data[i][0] = Date.parse(stockToSave.data[i][0]);
+              }
               stockToSave.save(err => {
                 if (err)
                   throw err;

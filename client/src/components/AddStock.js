@@ -32,17 +32,23 @@ class AddStock extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <input placeholder="Stock code e.g. AAPL" value={this.state.code} onChange={this.handleCodeChange}/>
-          <button onClick={this.submitStockCode}>Add</button>
-        </form>
+      <div className="row">
+        <div className="col-sm-12">
+          <div className="input-group">
+            <input className="form-control" placeholder="Stock code e.g. AAPL" value={this.state.code} onChange={this.handleCodeChange}/>
+            <span className="input-group-btn">
+              <button className="btn btn-success" onClick={this.submitStockCode}>Add</button>
+            </span>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({addStock}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  addStock
+}, dispatch);
 
 const AddStockContainer = connect(null, mapDispatchToProps)(AddStock);
 

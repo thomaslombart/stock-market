@@ -11,9 +11,9 @@ class App extends Component {
     return (
       <div className="main container">
         <h1 className="title">Watch the stocks</h1>
+        <AddStock/>
         <Chart/>
         <StockList/>
-        <AddStock/>
         <Footer/>
       </div>
     );

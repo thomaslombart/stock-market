@@ -1,7 +1,14 @@
 .footer {
   font-family: Oswald;
+  color: gray;
 }
 
 .social-link {
+  color: gray;
+  margin: 0px 3px;
+  transition: color 0.5s ease-in-out;
+}
+
+.social-link:hover {
   color: black;
 }
