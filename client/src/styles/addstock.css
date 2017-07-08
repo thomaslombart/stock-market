@@ -4,4 +4,9 @@
 
 .btn {
   cursor: pointer;
+  font-family: Oswald;
+}
+
+.form-control {
+  font-family: Oswald;
 }

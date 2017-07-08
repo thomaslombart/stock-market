@@ -37,7 +37,7 @@ class AddStock extends Component {
           <div className="input-group">
             <input className="form-control" placeholder="Stock symbol e.g. AAPL" value={this.state.code} onChange={this.handleCodeChange}/>
             <span className="input-group-btn">
-              <button className="btn btn-success" onClick={this.submitStockCode}>Add</button>
+              <button className="btn btn-primary" onClick={this.submitStockCode}>Add</button>
             </span>
           </div>
       </div>
