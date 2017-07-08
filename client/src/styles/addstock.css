@@ -10,3 +10,7 @@
 .form-control {
   font-family: Oswald;
 }
+
+.alert {
+  margin-top: 5px;
+}

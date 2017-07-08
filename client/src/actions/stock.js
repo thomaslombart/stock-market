@@ -3,6 +3,8 @@ import store from '../store';
 export const ADD_STOCK = 'ADD_STOCK';
 export const REMOVE_STOCK = 'REMOVE_STOCK';
 export const LOAD_STOCKS = 'LOAD_STOCKS';
+export const ERROR_STOCK = 'ERROR_STOCK';
+export const SUCCESS_STOCK = 'SUCCESS_STOCK';
 
 /* setup socket */
 
@@ -21,6 +23,16 @@ socket.on('add stock code', res => {
     description: res.description,
     data: res.data,
     id: res.id
+  });
+  store.dispatch({
+    type: SUCCESS_STOCK
+  });
+});
+
+socket.on('error stock code', message => {
+  store.dispatch({
+    type: ERROR_STOCK,
+    message: message
   });
 });
 

@@ -16,7 +16,7 @@ class StockList extends Component {
   }
 }
 
-const mapStateToProps = state => ({stocks: state});
+const mapStateToProps = state => ({stocks: state.stocks});
 
 const StockListContainer = connect(mapStateToProps)(StockList);
 

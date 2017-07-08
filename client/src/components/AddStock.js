@@ -32,6 +32,7 @@ class AddStock extends Component {
   }
 
   render() {
+    const hasError = this.props.notification.hasOwnProperty("message");
     return (
       <div className="add-stock-container">
           <div className="input-group">
@@ -40,15 +41,18 @@ class AddStock extends Component {
               <button className="btn btn-primary" onClick={this.submitStockCode}>Add</button>
             </span>
           </div>
+          {hasError && <div className="alert alert-danger" role="alert">{this.props.notification.message}</div>}
       </div>
     )
   }
 }
 
+const mapStateToProps = state => ({notification: state.notification});
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   addStock
 }, dispatch);
 
-const AddStockContainer = connect(null, mapDispatchToProps)(AddStock);
+const AddStockContainer = connect(mapStateToProps, mapDispatchToProps)(AddStock);
 
 export default AddStockContainer;

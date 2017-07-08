@@ -22,3 +22,8 @@
   font-weight: 300;
   font-size: 0.9em;
 }
+
+
+.fa-times:hover {
+  transform: scale(1.2);
+}
