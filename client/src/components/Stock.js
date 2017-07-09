@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {removeStock} from '../actions/stock';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -17,20 +18,25 @@ class Stock extends Component {
   render() {
     return (
       <div className="stock col-sm-4">
-          <p className="stock-code">{this.props.code}
-            <span className="float-sm-right" onClick={this.handleRemoveClick}>
-              <i className="fa fa-times"></i>
-            </span>
-          </p>
-          <p className="stock-description">
-            {this.props.description}
-          </p>
+        <p className="stock-code">
+          <Link to={`/${this.props.code}`}>
+            {this.props.code}
+          </Link>
+          <span className="float-sm-right" onClick={this.handleRemoveClick}>
+            <i className="fa fa-times"></i>
+          </span>
+        </p>
+        <p className="stock-description">
+          {this.props.description}
+        </p>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({removeStock}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  removeStock
+}, dispatch);
 
 const StockContainer = connect(null, mapDispatchToProps)(Stock);
 

@@ -2,12 +2,15 @@
   /* inline block make the div adjust to content */
   border: 0.2px solid #3e3e40;
   padding: 10px;
-  cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
 .stock:hover {
   background-color: #3e3e40;
+  color: white;
+}
+
+.stock:hover a {
   color: white;
 }
 
@@ -17,10 +20,26 @@
   font-size: 1.1em;
 }
 
+.stock-code a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.stock-code a:hover {
+  text-decoration: underline;
+  transform: scale(1.2);
+}
+
 .stock-description {
   font-family: Oswald;
   font-weight: 300;
   font-size: 0.9em;
+}
+
+.fa-times {
+  cursor: pointer;
 }
 
 .fa-times:hover {

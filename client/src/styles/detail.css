@@ -1,0 +1,14 @@
+.detail-title, .message {
+  font-family: Oswald;
+  font-weight: 600;
+}
+
+.fa-home {
+  margin-top: 10px;
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
+
+.fa-home:hover {
+  transform: scale(1.2);
+}

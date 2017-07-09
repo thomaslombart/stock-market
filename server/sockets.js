@@ -3,6 +3,7 @@ import Stock from './models/stock';
 
 const QUANDL_API_KEY = process.env.QUANDL_API_KEY;
 const financialData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${code}.json?column_index=1&order=asc&api_key=${QUANDL_API_KEY}`;
+const detailedData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${code}.json?order=asc&api_key=${QUANDL_API_KEY}`
 
 module.exports = io => {
   io.on('connection', socket => {
@@ -42,14 +43,10 @@ module.exports = io => {
               });
             });
           }).catch(err => {
-            return socket.emit('error stock code', {
-              message: `You have entered an incorrect code`
-            })
+            return socket.emit('error stock code', {message: `You have entered an incorrect code`})
           });
         } else {
-          return socket.emit('error stock code', {
-            message: `The stock symbol already exists`
-          });
+          return socket.emit('error stock code', {message: `The stock symbol already exists`});
         }
       });
     });
@@ -60,6 +57,32 @@ module.exports = io => {
 
         // Send back the id to the client to delete the object in the state object
         return io.emit('delete stock code', id);
+      });
+    });
+    socket.on('send detail stock code', code => {
+      axios.get(detailedData(code)).then(response => {
+        let stock = response.data.dataset.data;
+        let dataLength = stock.length;
+        let ohlc = [];
+        let volume = [];
+        for (let i = 0; i < dataLength; i++) {
+          stock[i][0] = Date.parse(stock[i][0]);
+          ohlc.push([
+            stock[i][0], // the date
+            stock[i][1], // open
+            stock[i][2], // high
+            stock[i][3], // low
+            stock[i][4] // close
+          ]);
+          volume.push([
+            stock[i][0], // the date
+            stock[i][5] // the volume
+          ]);
+        }
+
+        return socket.emit('load detailed stock', {'ohlc': ohlc, 'volume': volume});
+      }).catch(err => {
+        return socket.emit('error stock code', {message: 'Oops something went wrong !'})
       });
     });
   });
