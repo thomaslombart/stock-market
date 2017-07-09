@@ -15,7 +15,7 @@ class Chart extends Component {
     if (this.props.stocks.length !== 0) {
       return <ReactHighstock config={theme} ref="chart"></ReactHighstock>
     } else {
-      return <div>Waiting for data...</div>
+      return <div></div>
     }
   }
 }
