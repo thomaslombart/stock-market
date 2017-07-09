@@ -4,15 +4,16 @@
 
 .spin {
   animation-name: spin;
-  animation-duration: 0.7s;
+  animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 @keyframes spin {
   from {
     transform: rotate(0deg);
   } to {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 }

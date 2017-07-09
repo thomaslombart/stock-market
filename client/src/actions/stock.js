@@ -33,7 +33,7 @@ socket.on('error stock code', message => {
 
 socket.on('delete stock code', id => {
   store.dispatch({type: REMOVE_STOCK, id: id});
-  store.dispatch({SUCCESS_STOCK});
+  store.dispatch({type: SUCCESS_STOCK});
 });
 
 /* actions */
