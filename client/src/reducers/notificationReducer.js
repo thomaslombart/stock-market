@@ -1,11 +1,13 @@
-import {ERROR_STOCK, SUCCESS_STOCK} from '../actions/stock';
+import {ERROR_STOCK, SUCCESS_STOCK, FETCH_DATA} from '../actions/stock';
 
 const notificationReducer = (state = {}, action) => {
   switch (action.type) {
     case ERROR_STOCK:
-      return Object.assign({}, action.message);
+      return Object.assign({}, action.message, {isFetching: false});
     case SUCCESS_STOCK:
-      return {};
+      return {isFetching: false};
+    case FETCH_DATA:
+      return {isFetching: true};
     default:
       return state;
   }

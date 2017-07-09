@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Chart from './Chart';
+import Loading from './Loading';
 import StockList from './StockList';
 import AddStock from './AddStock';
 import Footer from './Footer';
@@ -12,6 +13,9 @@ class App extends Component {
         <div className="row justify-content-center">
           <div className="col-sm-12">
             <h1 className="title text-sm-center">Watch the stocks</h1>
+          </div>
+          <div className="col-sm-12">
+            <Loading/>
           </div>
           <div className="col-sm-12">
             <Chart/>

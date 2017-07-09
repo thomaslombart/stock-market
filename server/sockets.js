@@ -7,6 +7,7 @@ const financialData = code => `https://www.quandl.com/api/v3/datasets/WIKI/${cod
 module.exports = io => {
   io.on('connection', socket => {
     /* We need all data when client connects to the page */
+    socket.emit('fetch data');
     Stock.find({}, (err, docs) => {
       if (err)
         throw err;
@@ -44,6 +45,10 @@ module.exports = io => {
             return socket.emit('error stock code', {
               message: `You have entered an incorrect code`
             })
+          });
+        } else {
+          return socket.emit('error stock code', {
+            message: `The stock symbol already exists`
           });
         }
       });

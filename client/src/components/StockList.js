@@ -8,7 +8,7 @@ class StockList extends Component {
     return (
       <div className="container-fluid">
         <div className="row stock-list">
-          {this.props.stocks.map((stock, i) => <Stock key={i} id={stock.id} code={stock.code} description={stock.description}/>)}
+          {this.props.stocks.map(stock => <Stock key={stock.id} id={stock.id} code={stock.code} description={stock.description}/>)}
           {this.props.stocks.length === 0 && <p>No Stocks!</p>}
         </div>
       </div>

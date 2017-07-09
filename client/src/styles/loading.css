@@ -1,0 +1,18 @@
+.fa-cog {
+  margin-bottom: 5px;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(180deg);
+  }
+}
