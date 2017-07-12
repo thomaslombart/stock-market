@@ -14,7 +14,7 @@ module.exports = io => {
         throw err;
 
       // We decide what object to send to client because we don't want '_id' and '__v'
-      let allStockCodes = docs.map(doc => ({code: doc.code, id: doc.id, description: doc.description, data: doc.data}));
+      let allStockCodes = docs.map(doc => ({ code: doc.code, id: doc.id, description: doc.description, data: doc.data }));
       socket.emit('load stocks', allStockCodes);
     });
     socket.on('send stock code', code => {
@@ -27,7 +27,7 @@ module.exports = io => {
           // We need to verify if the stock code is a valid one by calling Quandl API
           axios.get(financialData(code)).then(response => {
             let stock = response.data.dataset;
-            let stockToSave = new Stock({code: stock.dataset_code, description: stock.name, data: stock.data});
+            let stockToSave = new Stock({ code: stock.dataset_code, description: stock.name, data: stock.data });
             // Convert datetime to timestamp for Highcharts
             for (let i = 0; i < stockToSave.data.length; i++) {
               stockToSave.data[i][0] = Date.parse(stockToSave.data[i][0]);
@@ -43,10 +43,11 @@ module.exports = io => {
               });
             });
           }).catch(err => {
-            return socket.emit('error stock code', {message: `You have entered an incorrect code`})
+            if (err) throw err;
+            return socket.emit('error stock code', { message: `You have entered an incorrect code` })
           });
         } else {
-          return socket.emit('error stock code', {message: `The stock symbol already exists`});
+          return socket.emit('error stock code', { message: `The stock symbol already exists` });
         }
       });
     });
@@ -80,9 +81,10 @@ module.exports = io => {
           ]);
         }
 
-        return socket.emit('load detailed stock', {'ohlc': ohlc, 'volume': volume});
+        return socket.emit('load detailed stock', { 'ohlc': ohlc, 'volume': volume });
       }).catch(err => {
-        return socket.emit('error stock code', {message: 'Oops something went wrong !'})
+        if (err) throw err;
+        return socket.emit('error stock code', { message: 'Oops something went wrong !' })
       });
     });
   });
