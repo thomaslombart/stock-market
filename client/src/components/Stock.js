@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../styles/stock.css';
 
 const Stock = ({ code, description, onClick }) => (
   <div className="stock col-sm-4">
     <p className="stock-code">
-      <Link to={`/${code}`}>
-        {code}
-      </Link>
+      <span>{code}</span>
       <span className="float-sm-right" onClick={onClick}>
         <i className="fa fa-times"></i>
       </span>
@@ -16,6 +14,12 @@ const Stock = ({ code, description, onClick }) => (
       {description}
     </p>
   </div>
-)
+);
+
+Stock.PropTypes = {
+  code: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
 
 export default Stock;

@@ -6,7 +6,6 @@ export const LOAD_STOCKS = 'LOAD_STOCKS';
 export const ERROR_STOCK = 'ERROR_STOCK';
 export const SUCCESS_STOCK = 'SUCCESS_STOCK';
 export const FETCH_DATA = 'FETCH_DATA';
-export const LOAD_DETAIL_STOCK = 'LOAD_DETAIL_STOCK';
 
 /* setup socket */
 
@@ -35,10 +34,6 @@ socket.on('error stock code', (message) => {
 socket.on('delete stock code', (id) => {
   store.dispatch({ type: REMOVE_STOCK, id });
   store.dispatch({ type: SUCCESS_STOCK });
-});
-
-socket.on('load detailed stock', (data) => {
-  store.dispatch({ type: LOAD_DETAIL_STOCK, ohlc: data.ohlc, volume: data.volume });
 });
 
 /* actions */
