@@ -7,7 +7,7 @@ const financialData = (code) => `https://www.quandl.com/api/v3/datasets/WIKI/${c
 module.exports = io => {
   io.on('connection', socket => {
     /* We need all data when client connects to the page */
-    socket.emit('fetch data');
+    socket.emit('action is loading');
     Stock.find({}, (err, docs) => {
       if (err)
         throw err;
@@ -15,7 +15,7 @@ module.exports = io => {
       let allStockCodes = docs.map(doc => ({ code: doc.code, id: doc.id, description: doc.description, data: doc.data }));
       socket.emit('load stocks', allStockCodes);
     });
-    socket.on('send stock code', code => {
+    socket.on('add stock code', code => {
       Stock.findOne({
         code: code
       }, (err, doc) => {
@@ -42,14 +42,14 @@ module.exports = io => {
             });
           }).catch(err => {
             if (err)
-              return socket.emit('error stock code', { message: `You have entered an incorrect code` })
+              return socket.emit('action has failed', { message: `You have entered an incorrect code` })
           });
         } else {
-          return socket.emit('error stock code', { message: `The stock symbol already exists` });
+          return socket.emit('action has failed', { message: `The stock symbol already exists` });
         }
       });
     });
-    socket.on('send delete stock code', id => {
+    socket.on('delete stock code', id => {
       Stock.findByIdAndRemove(id, (err) => {
         if (err)
           throw err;

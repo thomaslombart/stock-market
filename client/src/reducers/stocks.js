@@ -1,6 +1,6 @@
-import {ADD_STOCK, REMOVE_STOCK, LOAD_STOCKS} from '../actions/stock';
+import { ADD_STOCK, REMOVE_STOCK, LOAD_STOCKS } from '../actions/stock';
 
-const stockReducer = (state = [], action) => {
+const stocks = (state = [], action) => {
   switch (action.type) {
     case ADD_STOCK:
       return [
@@ -20,4 +20,4 @@ const stockReducer = (state = [], action) => {
   }
 };
 
-export default stockReducer;
+export default stocks;
