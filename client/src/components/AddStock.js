@@ -19,8 +19,8 @@ class AddStock extends Component {
     return this.state.code !== '';
   }
 
-  handleCodeChange(event) {
-    this.setState({ code: event.target.value.trim() });
+  handleCodeChange(e) {
+    this.setState({ code: e.target.value.trim() });
   }
 
   submitStockCode(e) {
