@@ -1,4 +1,4 @@
-const theme = {
+const config = (series) => ({
   colors: [
     '#2b908f',
     '#90ee7e',
@@ -197,6 +197,8 @@ const theme = {
     }
   },
 
+  series,
+
   scrollbar: {
     barBackgroundColor: '#808083',
     barBorderColor: '#808083',
@@ -215,6 +217,6 @@ const theme = {
   textColor: '#C0C0C0',
   contrastTextColor: '#F0F0F3',
   maskColor: 'rgba(255,255,255,0.3)'
-};
+});
 
-export default theme;
+export default config;
