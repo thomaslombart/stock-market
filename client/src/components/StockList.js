@@ -34,7 +34,7 @@ StockList.propTypes = {
     description: PropTypes.string.isRequired,
     data: PropTypes.array.isRequired,
     id: PropTypes.string.isRequired,
-    removeStock: PropTypes.func.isRequired
+    removeStock: PropTypes.func
   }))
 };
 

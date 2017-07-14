@@ -46,7 +46,7 @@ class AddStock extends Component {
 AddStock.propTypes = {
   isFetching: PropTypes.bool,
   message: PropTypes.string,
-  addStock: PropTypes.func.isRequired
+  addStock: PropTypes.func
 };
 
 const mapStateToProps = state => ({ notification: state.notification });
