@@ -1,14 +1,8 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import stocks from './reducers/stockReducer';
-import notification from './reducers/notificationReducer';
+import stockApp from './reducers';
 
-const rootReducer = combineReducers({
-  stocks,
-  notification
-});
-
-const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+const store = createStore(stockApp, applyMiddleware(logger, thunk));
 
 export default store;
