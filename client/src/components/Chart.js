@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import configureHighcharts from '../utils/highchartsConfig';
 
@@ -20,8 +21,17 @@ class Chart extends Component {
   }
 }
 
+Chart.propTypes = {
+  stocks: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
+    id: PropTypes.string.isRequired
+  }))
+};
+
 const mapStateToProps = state => ({ stocks: state.stocks });
 
-const ChartContainer = connect(mapStateToProps)(Chart);
+Chart = connect(mapStateToProps)(Chart);
 
-export default ChartContainer;
+export default Chart;

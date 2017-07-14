@@ -1,9 +1,10 @@
 body, html {
   margin: 0;
   padding: 0;
+  font-family: Oswald;
 }
 
 .title {
-  font-family: Oswald;
   font-weight: 600;
 }
+

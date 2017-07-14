@@ -16,7 +16,7 @@ const Stock = ({ code, description, onClick }) => (
   </div>
 );
 
-Stock.PropTypes = {
+Stock.propTypes = {
   code: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired

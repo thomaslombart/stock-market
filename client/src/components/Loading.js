@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import '../styles/loading.css';
 
@@ -12,8 +13,13 @@ class Loading extends Component {
   }
 }
 
+Loading.propTypes = {
+  isFetching: PropTypes.bool,
+  message: PropTypes.string
+};
+
 const mapStateToProps = state => ({ notification: state.notification });
 
-const LoadingContainer = connect(mapStateToProps)(Loading);
+Loading = connect(mapStateToProps)(Loading);
 
-export default LoadingContainer;
+export default Loading;

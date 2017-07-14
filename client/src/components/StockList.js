@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Stock from './Stock';
+import PropTypes from 'prop-types';
+import { Stock } from './';
 import { removeStock } from '../actions/stock';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -27,11 +28,23 @@ class StockList extends Component {
   }
 }
 
+StockList.propTypes = {
+  stocks: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
+    id: PropTypes.string.isRequired,
+    removeStock: PropTypes.func.isRequired
+  }))
+};
+
 const mapStateToProps = state => ({ stocks: state.stocks });
 const mapDispatchToProps = dispatch => bindActionCreators({
   removeStock
 }, dispatch);
 
-const StockListContainer = connect(mapStateToProps, mapDispatchToProps)(StockList);
+StockList = connect(mapStateToProps, mapDispatchToProps)(StockList);
 
-export default StockListContainer;
+
+
+export default StockList;

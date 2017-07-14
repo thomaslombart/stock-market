@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { addStock } from '../actions/stock';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -12,11 +13,6 @@ class AddStock extends Component {
     }
     this.handleCodeChange = this.handleCodeChange.bind(this);
     this.submitStockCode = this.submitStockCode.bind(this);
-    this.getValidationCodeState = this.getValidationCodeState.bind(this);
-  }
-
-  getValidationCodeState() {
-    return this.state.code !== '';
   }
 
   handleCodeChange(e) {
@@ -25,7 +21,7 @@ class AddStock extends Component {
 
   submitStockCode(e) {
     e.preventDefault();
-    if (this.getValidationCodeState()) {
+    if (this.state.code !== '') {
       this.setState({ code: '' });
       this.props.addStock(this.state.code);
     }
@@ -47,12 +43,18 @@ class AddStock extends Component {
   }
 }
 
+AddStock.propTypes = {
+  isFetching: PropTypes.bool,
+  message: PropTypes.string,
+  addStock: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => ({ notification: state.notification });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addStock
 }, dispatch);
 
-const AddStockContainer = connect(mapStateToProps, mapDispatchToProps)(AddStock);
+AddStock = connect(mapStateToProps, mapDispatchToProps)(AddStock);
 
-export default AddStockContainer;
+export default AddStock;
