@@ -20,18 +20,6 @@
   font-size: 1.1em;
 }
 
-.stock-code a {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-
-}
-
-.stock-code a:hover {
-  text-decoration: underline;
-  transform: scale(1.2);
-}
-
 .stock-description {
   font-family: Oswald;
   font-weight: 300;

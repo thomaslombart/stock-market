@@ -17,7 +17,7 @@ class StockList extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row stock-list">
           {this.props.stocks.map(stock => <Stock key={stock.id} code={stock.code} description={stock.description} onClick={() => this.handleRemoveClick(stock.id)} />)}
           {this.props.stocks.length === 0 && <h3 className="col-sm-12 text-sm-center nothing ">No stocks!</h3>}
