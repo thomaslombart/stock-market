@@ -1,5 +1,4 @@
 import express from 'express';
-import axios from 'axios';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import path from 'path';
@@ -10,8 +9,9 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Redirect all unmatched routes to homepage
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });

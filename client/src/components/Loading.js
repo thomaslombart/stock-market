@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../styles/loading.css';
 
 class Loading extends Component {
@@ -12,7 +12,7 @@ class Loading extends Component {
   }
 }
 
-const mapStateToProps = state => ({notification: state.notification});
+const mapStateToProps = state => ({ notification: state.notification });
 
 const LoadingContainer = connect(mapStateToProps)(Loading);
 
