@@ -12,7 +12,12 @@ module.exports = io => {
       if (err)
         throw err;
       // We decide what object to send to client because we don't want '_id' and '__v'
-      let allStockCodes = docs.map(doc => ({ code: doc.code, id: doc.id, description: doc.description, data: doc.data }));
+      let allStockCodes = docs.map(doc => ({
+        code: doc.code,
+        id: doc.id,
+        description: doc.description,
+        data: doc.data
+      }));
       socket.emit('load stocks', allStockCodes);
     });
     socket.on('add stock code', code => {
@@ -25,7 +30,11 @@ module.exports = io => {
           // We need to verify if the stock code is a valid one by calling Quandl API
           axios.get(financialData(code)).then(response => {
             let stock = response.data.dataset;
-            let stockToSave = new Stock({ code: stock.dataset_code, description: stock.name, data: stock.data });
+            let stockToSave = new Stock({
+              code: stock.dataset_code,
+              description: stock.name,
+              data: stock.data
+            });
             // Convert datetime to timestamp for Highcharts
             for (let i = 0; i < stockToSave.data.length; i++) {
               stockToSave.data[i][0] = Date.parse(stockToSave.data[i][0]);
@@ -42,10 +51,14 @@ module.exports = io => {
             });
           }).catch(err => {
             if (err)
-              return socket.emit('action has failed', { message: `You have entered an incorrect code` })
+              return socket.emit('action has failed', {
+                message: `You have entered an incorrect code`
+              })
           });
         } else {
-          return socket.emit('action has failed', { message: `The stock symbol already exists` });
+          return socket.emit('action has failed', {
+            message: `The stock symbol already exists`
+          });
         }
       });
     });
@@ -53,7 +66,6 @@ module.exports = io => {
       Stock.findByIdAndRemove(id, (err) => {
         if (err)
           throw err;
-
         // Send back the id to the client to delete the object in the state object
         return io.emit('delete stock code', id);
       });
