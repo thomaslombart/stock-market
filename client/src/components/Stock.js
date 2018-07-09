@@ -1,22 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "../styles/stock.css";
-import styled from "styled-components";
-
-const StockTitle = styled.h2`
-  color: blue;
-`;
+import React from 'react';
+import PropTypes from 'prop-types';
+import '../styles/stock.css';
 
 const Stock = ({ code, description, onClick }) => (
   <div className="stock col-sm-4">
     <p className="stock-code">
-      <StockTitle>{code}</StockTitle>
       <span>{code}</span>
       <span className="float-sm-right" onClick={onClick}>
-        <i className="fa fa-times" />
+        <i className="fa fa-times"></i>
       </span>
     </p>
-    <p className="stock-description">{description}</p>
+    <p className="stock-description">
+      {description}
+    </p>
   </div>
 );
 
